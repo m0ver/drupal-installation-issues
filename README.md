@@ -144,3 +144,45 @@ server {
     }
 }
 ```
+## How could I use Oracle as Drupal database?
+You need to install the oracle driver first under the drupal root folder. 
+```
+composer require 'drupal/oracle:1.x-dev@dev'
+composer install
+```
+so before you execute the command, you need to install composer first.
+and also you need to copy the driver folder under DRUPAL_ROOT, as there is a logic to validate the folder and scan for drivers: `DRUPAL_ROOT . '/drivers/lib/Drupal/Driver/Database`
+## How to install Composer?
+Please see the documentation: https://getcomposer.org/download/
+## What's difference after I install the drupal oracle driver?
+You will see a new database type in the database installation page.
+## Why I could not see Oracle database type from the installation page?
+There is a logic in drupal core to validate pdo_oci module in PHP. If you have installed it, you would be able to see the Oracle database type.
+## How could I install pdo_oci module?
+- Install the [InstantClient](https://www.oracle.com/database/technologies/instant-client/linux-x86-64-downloads.html) from RPMs. You need install basic package, developement and runtime package as well.
+- Download the PHP sources, matching the current PHP version installed php -v
+```
+PHP 7.3.29 (cli) (built: Jan 18 2020 13:49:07) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.1.0, Copyright (c) 1998-2018 Zend Technologies
+```
+- https://github.com/php/php-src/tags
+```
+cd /root
+mkdir src
+cd src
+wget https://github.com/php/php-src/archive/refs/tags/php-7.3.29.tar.gz
+tar xfvz php-7.3.29.tar.gz
+```
+- Compile and install the extension
+```
+cd php-7.3.29
+cd ext
+cd pdo_oci
+phpize
+./configure --with-pdo-oci=instantclient,[YOUR_ORACLE_LIBRARY_PATH],21
+make
+make install
+echo extension=pdo_oci.so > /etc/php.d/pdo_oci.ini
+php -i | grep oci
+```
