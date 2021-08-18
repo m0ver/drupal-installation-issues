@@ -186,3 +186,9 @@ make install
 echo extension=pdo_oci.so > /etc/php.d/pdo_oci.ini
 php -i | grep oci
 ```
+## Error: ORA-00955: name is already used by an existing object
+Please refer to the article: https://www.ibm.com/support/pages/error-ora-00955-name-already-used-existing-object
+## ORA-00972: identifier is too long
+Database object names in 11g as well as in 12cR1 are limited to 30 bytes (in a single-byte character set it will be equivalent to 30 characters).
+The 30 bytes object names restriction has been lifted in second release of Oracle Database 12c (12cR2) and if the value of the COMPATIBLE initialization parameter is set to 12.2 or higher then object names' length can be up to 128 bytes.
+If you could not change Oracle version, you can change the CONSTANTS in Oracle driver (Connection.php) to be: `define('ORACLE_IDENTIFIER_MAX_LENGTH', 30);`
