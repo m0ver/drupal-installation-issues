@@ -17,7 +17,7 @@ Drupal provided a really easy way to integrate with different platform, support 
 ## How to install Drupal?
 You can follow the material in drupal.org. really rich documentation in internet can be found. Here are a bunch of documents for you: https://www.drupal.org/docs/develop/local-server-setup/linux-development-environments
 ## How could I install it with nginx?
-You need install php-fpm modules to integrate with nginx. https://www.nginx.com/resources/wiki/start/topics/recipes/drupal/
+You need install [php-fpm](https://php-fpm.org/) modules to integrate with nginx. https://www.nginx.com/resources/wiki/start/topics/recipes/drupal/
 ```
 server {
     server_name example.com;
