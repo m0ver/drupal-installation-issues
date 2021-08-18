@@ -151,7 +151,7 @@ composer require 'drupal/oracle:1.x-dev@dev'
 composer install
 ```
 so before you execute the command, you need to install composer first.
-and also you need to copy the driver folder under DRUPAL_ROOT, as there is a logic to validate the folder and scan for drivers: `DRUPAL_ROOT . '/drivers/lib/Drupal/Driver/Database`
+and also you need to copy the driver folder under DRUPAL_ROOT, as there is a logic to validate the folder and scan for drivers: `DRUPAL_ROOT . '/drivers/lib/Drupal/Driver/Database'`
 ## How to install Composer?
 Please see the documentation: https://getcomposer.org/download/
 ## What's difference after I install the drupal oracle driver?
